@@ -4,7 +4,7 @@ from flask_jwt_extended import create_access_token
 from app.utils.functions import *
 
 usersBP = Blueprint('users', __name__)
-rutaUsuarios = "Cine/cineAnidado/app/ficheros/users.json"
+rutaUsuarios = "cineAnidado/app/ficheros/users.json"
 
 
 

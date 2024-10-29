@@ -3,8 +3,8 @@ from flask_jwt_extended import jwt_required
 from app.utils.functions import *
 
 peliculasBP = Blueprint('peliculas', __name__)
-rutaPeliculas = "Cine/cineAnidado/app/ficheros/peliculas.json"
-rutaDirectores = "Cine/cineAnidado/app/ficheros/directores.json"
+rutaPeliculas = "cineAnidado/app/ficheros/peliculas.json"
+rutaDirectores = "cineAnidado/app/ficheros/directores.json"
 
 
 @peliculasBP.get("/")
