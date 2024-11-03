@@ -65,9 +65,26 @@ if(api):
                      print("Se ha producido un error")
                   opc = 0
 
-         # elif opc == 3:
-                  
-         #          opc = 0
+         elif opc == 3:
+                  nombre = input("Introduzca el nombre: ")
+                  apellidos = input("Introduzca los apellidos: ")
+                  dni = input("Introduzca el dni: ")
+                  nacionalidad = input("Introduzca la nacionalidad: ")
+                  nuevoDirector = {"nombre":nombre,"apellidos":apellidos,"dni":dni,"nacionalidad":nacionalidad}
+
+                  try:
+                     response = requests.post("http://localhost:5050/directores/",json=nuevoDirector,headers={"Authorization": "Bearer " + token})
+                  except Exception as e:
+                     print(e)
+
+                  # Si la petición es exitosa
+                  if response.status_code == 200:
+                  # Muestra el json correspondiente a la petición
+                     print(response.json())
+                  # Si no, muestra este mensaje
+                  else:
+                     print("Se ha producido un error")
+                  opc = 0
 
          # elif opc == 4:
          #          id = input("Introduzca un id: ")
@@ -92,9 +109,20 @@ if(api):
          #                nacionalidad = input("Introduce la nacionalidad nuevo")
          #                elemento = {"dni":nacionalidad}
          #                print(patchDirector(id,elemento))
-         # elif opc == 5:
-         #          id = input("Introduce el id: ")
-         #          print(deleteDirector(id))
+         elif opc == 5:
+                  try:
+                     id =input("Introduce el id del director: ")
+                     response = requests.delete("http://localhost:5050/directores/" + id,headers={"Authorization": "Bearer " + token})
+                  except Exception as e:
+                     print(e)
+
+                  # Si la petición es exitosa
+                  if response.status_code == 200:
+                  # Muestra el json correspondiente a la petición
+                     print(response.json())
+                  # Si no, muestra este mensaje
+                  else:
+                     print("Se ha producido un error")
 
          elif opc == 6:
             try:
@@ -154,9 +182,24 @@ if(api):
                      print("Se ha producido un error")
                   opc = 0
 
-         # elif opc == 3:
-         #          print(modPelicula("1", "El Fary", "1 hora", "1"))
+         elif opc == 3:
+                  titulo = input("Introduce el titulo")
+                  duracion = input("Introduce la duracion")
+                  idDirector = input("Introduce el id del director")
+                  nuevaPelicula = {"titulo": titulo,"duracion":duracion,"idDirector":idDirector}
 
+                  try:
+                      response = requests.post("http://localhost:5050/peliculas/",json=nuevaPelicula,headers={"Authorization": "Bearer" + token})
+                  except Exception as e:
+                      print(e)
+
+                  if response.status_code == 201:
+                      print(response.json())
+                  else:
+                      print("Se ha producido un error")
+                  opc = 0
+
+                  
          # elif opc == 4:
          #          id = input("Introduzca un id: ")
          #          print("1. Modificar titulo.")
@@ -175,9 +218,20 @@ if(api):
          #                director = input("Introduce el director nuevo")
          #                elemento = {"director":director}
          #                print(patchPelicula(id,elemento))
-         # elif opc == 5:
-         #          id = input("Introduce el id: ")
-         #          print(deletePelicula(id))
+         elif opc == 5:
+                  try:
+                     id =input("Introduce el id de la pelicula: ")
+                     response = requests.get("http://localhost:5050/peliculas/" + id,headers={"Authorization": "Bearer " + token})
+                  except Exception as e:
+                     print(e)
+
+                  # Si la petición es exitosa
+                  if response.status_code == 200:
+                  # Muestra el json correspondiente a la petición
+                     print(response.json())
+                  # Si no, muestra este mensaje
+                  else:
+                     print("Se ha producido un error")
          elif opc == 6:
             try:
                id = input("Introduce el id de la pelicula: ")

@@ -1,11 +1,11 @@
 import bcrypt
 from flask import Blueprint, request
 from flask_jwt_extended import create_access_token
+
 from app.utils.functions import *
 
 usersBP = Blueprint('users', __name__)
-rutaUsuarios = "cineAnidado/app/ficheros/users.json"
-
+rutaUsuarios = "CrudCine/cineAnidado/app/ficheros"
 
 
 @usersBP.post('/')
