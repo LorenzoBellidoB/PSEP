@@ -7,10 +7,9 @@ from app.utils.functions import *
 usersBP = Blueprint('users', __name__)
 rutaUsuarios = "app/ficheros/users.json"
 
-
 @usersBP.post('/')
 def registerUser():
-    users = leeFichero(rutaUsuarios)
+    users = LeeFichero(rutaUsuarios)
     if request.is_json:
         
         user = request.get_json()
@@ -25,13 +24,12 @@ def registerUser():
 
         users.append(user)
 
-        escribeFichero(rutaUsuarios, users)
+        EscribeFichero(rutaUsuarios, users)
 
         token = create_access_token(identity=user['username'])
         return {"token":token}, 201
     
     return {"error": "Error"}, 415
-
 
 @usersBP.post("/login")
 def getUsuario():
@@ -39,7 +37,7 @@ def getUsuario():
        user = request.get_json()
        username = user["username"]
        password = user["password"]
-       usuarios = leeFichero(rutaUsuarios)
+       usuarios = LeeFichero(rutaUsuarios)
        for usuario in usuarios:
            if usuario["username"] == username and bcrypt.checkpw(password.encode("utf-8"),bytes.fromhex(usuario["password"])):
                return {"token": create_access_token(identity=username)}, 200

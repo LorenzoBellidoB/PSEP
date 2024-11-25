@@ -1,33 +1,52 @@
 from multiprocessing import Process,Queue
+import random
 from time import sleep
 
-def producer(q):
-    for i in range(5):
+def producer(q,id):
+    for i in range(10):
+        if q.full():
+            print(f'p:{id} Cola llena')
+            
         q.put(i)
-        print(i,'Enviado')
-        sleep(2)
+        print(f'p:{id} He puesto',i)
+        sleep(random.randint(1,5))
     q.put(None)
+    print(f'p:{id} He terminado')
 
-def consumer(q):
+def consumer(q, id):
     while True:
+        if q.empty():
+            print(f'c:{id} Cola vacia')
         item = q.get()
         if item is None:
             break
-        print(item,'Recibido')
-    sleep(1)
+                
+        print(f'c:{id} He cogido',item)
+        sleep(random.randint(1,5))
+    print(f'c:{id} He terminado')
+    
 
 if __name__ == '__main__':
-    queue = Queue()
 
-    proceso1 = Process(target=producer, args=(queue,))
+    productores = []
+    consumidores = []
 
-    proceso2 = Process(target=consumer, args=(queue,))
+    queue = Queue(maxsize=3)
+    for i in range(3):
+        productores.append(Process(target=producer, args=(queue,i,)))
+    for i in range(2):
+        consumidores.append(Process(target=consumer, args=(queue,i,)))
 
-    proceso1.start()
-    proceso2.start()
+    for p in productores:
+        p.start()
+    for c in consumidores:
+        c.start()
 
-    proceso1.join()
-    print('Proceso 1 terminado')
+    for p in productores:
+        p.join()
+        #print('Proceso 1 terminado')
 
-    proceso2.join()
-    print('Proceso 2 terminado')
+    for c in consumidores:
+        c.join()
+        #print('Proceso 2 terminado')
+    print('Todas las tareas han acabado')

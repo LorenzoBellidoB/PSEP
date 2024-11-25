@@ -1,0 +1,4 @@
+[
+    {"id": 1, "placa": "ABC1234", "estado":"null", "ultima_reserva": "null"},
+    {"id": 2, "placa": "XYZ5678", "estado": "Maria Lopez", "ultima_reserva": "2024-11-10 15:30"}
+]

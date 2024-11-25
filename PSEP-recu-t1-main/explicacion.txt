@@ -1,0 +1,20 @@
+autenticación por token:
+    Flask-JWT-Extended
+    A la hora de llamar a un método me solicite el token para llevarlo a cabo.
+
+cifrado de la contraseña:
+    bcrypt
+    Para que la contraseña no se guarde en limpio en el fichero
+
+json con la info:
+    {"username": "elena" ,
+    "password": "1234"}
+
+autenticación:
+    Vamos a recibir un json: {"username":"elena", "password":"1234"}
+    leer el fichero de usuarios y recogerlo en una lista
+    recorrer la lista buscando el username
+    si el username existe --> Calcular el hash de la contraseña del JSON que me pasan
+    comparo los dos hash: el que acabo de calcular con el que está en el fichero
+    Si coinciden --> Devolver un token
+    Si no coinciden --> Error de autenticación
