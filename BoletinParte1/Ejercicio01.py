@@ -1,12 +1,13 @@
 from time import sleep
 
-from multiprocessing import Process
+from multiprocessing import 
 
-def suma(numeros):
+def suma(numero):
+    print("Entrando: ", numero)
     suma = 0
-    for i in range (len(numeros)):
+    for i in range (1,numero+1):
         suma += i
-        print("Sumando hasta el", numeros[i],":", suma)
+        print("Sumando hasta el", numero,":", suma)
     sleep(2)
     return suma
 
@@ -14,8 +15,4 @@ def suma(numeros):
 
 if __name__ == "__main__":
 
-    numeros = [1,10,5]
-    p=Process(target=suma, args=(numeros,))
-    p.start()
-    p.join()
-    print("Resultados:",p)
+    
