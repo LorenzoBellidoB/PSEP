@@ -2,6 +2,7 @@ import random
 import multiprocessing
 
 # Proceso 1: Generar 6 notas aleatorias entre 1 y 10 y escribirlas en el fichero
+# TODO: Describe what the 'generar6_numero' function does.
 def generar6_numero(fichero):
     notas = []
     for _ in range(6):
@@ -18,6 +19,7 @@ def generar6_numero(fichero):
 
 
 # Proceso 2: Leer las notas desde el fichero y calcular la media, luego guardarla
+# TODO: Describe what the 'leer_fichero' function does.
 def leer_fichero(fichero, alumno):
     with open(fichero, 'r', encoding='utf-8') as f:
         notas = [float(linea.strip()) for linea in f]  # Leer y convertir a flotante las notas
@@ -34,6 +36,7 @@ def leer_fichero(fichero, alumno):
 
 
 # Proceso 3: Leer las medias desde el fichero y obtener la máxima
+# TODO: Describe what the 'leer_medias' function does.
 def leer_medias():
     nota_maxima = -1
     alumno_maxima = ""
@@ -56,8 +59,9 @@ def leer_medias():
 
 
 # Función principal para lanzar todos los procesos
+# TODO: Describe what the 'main' function does.
 def main():
-    fichero = "ficheroejer3.txt"  # El fichero único donde se almacenan las notas de los alumnos
+    fichero = "BoletinParte2/ficheroejer3.txt"  # El fichero único donde se almacenan las notas de los alumnos
     alumnos = ["Hector", "Marco", "Jorge", "Eduardo", "Pablo", "Raul", "JoseMamu", "Dani", "Ezeki", "Tonio"]
 
     # Paso 1: Generar notas para cada alumno y guardar en el fichero

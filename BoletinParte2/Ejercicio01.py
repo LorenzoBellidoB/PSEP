@@ -1,11 +1,13 @@
 import multiprocessing
 
+# TODO: Describe what the 'contar_vocal' function does.
 def contar_vocal(fichero, vocal):
     with open(fichero, 'r', encoding='utf-8') as f:
         texto = f.read().lower()  
         return texto.count(vocal)
 
 
+# TODO: Describe what the 'proceso_contar_vocales' function does.
 def proceso_contar_vocales(fichero):
 
     vocales = ['a', 'e', 'i', 'o', 'u']

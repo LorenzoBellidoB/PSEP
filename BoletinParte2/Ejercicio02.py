@@ -1,6 +1,7 @@
 import multiprocessing
 import random
 
+# TODO: Describe what the 'generar_ips' function does.
 def generar_ips(conexion_salida):
 
     for _ in range(10):
@@ -8,6 +9,7 @@ def generar_ips(conexion_salida):
         conexion_salida.send(ip)
     conexion_salida.close()
 
+# Proceso 2: Filtra las IPs que pertenecen a las clases A, B o C y las reenvía.
 def filtrar_clases(conexion_entrada, conexion_salida):
     """Proceso 2: Filtra las IPs que pertenecen a las clases A, B o C y las reenvía."""
     while True:
@@ -27,6 +29,7 @@ def filtrar_clases(conexion_entrada, conexion_salida):
             break
     conexion_salida.close()
 
+# Proceso 3: Recibe las IPs con su clase y las imprime por consola.
 def imprimir_ips(conexion_entrada):
     """Proceso 3: Recibe las IPs con su clase y las imprime por consola."""
     while True:
