@@ -28,3 +28,13 @@ JoseMamu 4.21
 Dani 6.47
 Ezeki 4.93
 Tonio 5.78
+Hector 7.13
+Marco 4.53
+Jorge 4.62
+Eduardo 4.54
+Pablo 5.08
+Raul 6.71
+JoseMamu 4.2
+Dani 6.42
+Ezeki 7.0
+Tonio 4.61
