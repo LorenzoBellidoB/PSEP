@@ -1,5 +1,5 @@
 import random
-from threading import Thread
+from threading import Barrier, Thread
 
 class NumeroOculto(Thread):
 
@@ -9,18 +9,19 @@ class NumeroOculto(Thread):
 
 class Jugador(Thread):
 
-    def __init__(self, name,res):
+    def __init__(self, name,res, barrera:Barrier):
         
-        Thread.__init__(self)
-        self.name = name
+        Thread.__init__(self, name = name)
         self.res = res
+        self.barrera = barrera
 
     def run(self):
+        self.barrera.wait()
         while NumeroOculto.numeroOculto != self.res:
             print("El jugador", self.name, "no ha adivinado el número", self.res)
             self.res = random.randint(1,10)
         
         print("El jugador", self.name, "ha adivinado el número", self.res)
-        
+        self.barrera.abort()
             
 
