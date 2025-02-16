@@ -22,7 +22,7 @@ class Carniceria(Thread):
         if espacios > 0:
             Carniceria = ""
             for i in range(espacios):
-                Carniceria += " 🛒 "
+                Carniceria += " 🥩 "
         return Carniceria
     
     def pintarCliente(self):
@@ -50,3 +50,5 @@ class Carniceria(Thread):
         elif num == 5:
             color = "\033[1;32;40m"
         return color
+    
+    
